@@ -36,15 +36,30 @@
         </div>
     </nav>
 
+    <?php
+    require_once 'PokemonsManager.php';
+    $manager = new PokemonsManager();
+    $pokemons = $manager->getAll();
+
+    ?>
+
     <main class="container">
-        <div class="card m-5" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="bulbizarre">
-            <div class="card-body">
-                <h5 class="card-title">Bulbizarre</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-warning">Modifier</a>
-            </div>
-        </div>
+        <section class=" d-flex flex-wrap justify-content-center">
+            <?php foreach ($pokemons as $pokemon) :
+
+            ?>
+                <div class="card m-5" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="<?= $pokemon->getName() ?>">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $pokemon->getNumber() ?># <?= $pokemon->getName() ?></h5>
+                        <p class="card-text"><?= $pokemon->getDescription() ?></p>
+                        <a href="#" class="btn btn-warning">Modifier</a>
+                    </div>
+                </div>
+            <?php endforeach ?>
+        </section>
+
+        <a href="create.php" class="btn btn-success">Créer un pokemon</a>
     </main>
 </body>
 

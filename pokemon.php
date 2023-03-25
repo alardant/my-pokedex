@@ -7,7 +7,8 @@ class Pokemon
     private string $name;
     private string $description;
     private int $type1;
-    private int $type2;
+    private ?int $type2;
+    private $image;
 
     public function __construct(array $data)
     {
@@ -21,7 +22,7 @@ class Pokemon
             $method = 'set' . ucfirst($key);
             if (method_exists($this, $method)) {
                 $this->$method($value);
-                // a tester avec isset
+                // a tester avec isset ?
             }
         }
     }
@@ -94,9 +95,23 @@ class Pokemon
         return $this->type2;
     }
 
-    public function setType2(int $type2): self
+    public function setType2(mixed $type2): self
     {
         $this->type2 = $type2;
+
+        return $this;
+    }
+
+
+
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function setImage($image)
+    {
+        $this->image = $image;
 
         return $this;
     }
