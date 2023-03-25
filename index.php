@@ -54,6 +54,7 @@
                         <h5 class="card-title"><?= $pokemon->getNumber() ?># <?= $pokemon->getName() ?></h5>
                         <p class="card-text"><?= $pokemon->getDescription() ?></p>
                         <a href="#" class="btn btn-warning">Modifier</a>
+                        <a href="delete.php?id=<?= $pokemon->getId() ?>" class="btn btn-danger">Supprimer</a>
                     </div>
                 </div>
             <?php endforeach ?>

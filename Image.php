@@ -25,11 +25,6 @@ class Image
 
     //Getters and Setter
 
-    public function getId(): int
-    {
-        return $this->id;
-    }
-
     public function setId(int $id): self
     {
         $this->id = $id;
@@ -37,9 +32,9 @@ class Image
         return $this;
     }
 
-    public function getName(): string
+    public function getId(): int
     {
-        return $this->name;
+        return $this->id;
     }
 
     public function setName(string $name): self
@@ -49,14 +44,20 @@ class Image
         return $this;
     }
 
-    public function getPath(): string
+    public function getName(): string
     {
-        return $this->path;
+        return $this->name;
     }
+
     public function setPath(string $path): self
     {
         $this->path = $path;
 
         return $this;
+    }
+
+    public function getPath(): string
+    {
+        return $this->path;
     }
 }
