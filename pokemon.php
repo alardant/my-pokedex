@@ -6,8 +6,8 @@ class Pokemon
     private int $number;
     private string $name;
     private string $description;
-    private int $type1;
-    private ?int $type2;
+    private string $type1;
+    private ?string $type2;
     private $image;
 
     public function __construct(array $data)
@@ -90,7 +90,7 @@ class Pokemon
         return $this;
     }
 
-    public function getType2(): int
+    public function getType2(): mixed
     {
         return $this->type2;
     }
@@ -104,7 +104,7 @@ class Pokemon
 
 
 
-    public function getImage()
+    public function getImageId()
     {
         return $this->image;
     }

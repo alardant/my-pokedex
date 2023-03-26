@@ -20,44 +20,48 @@ class ImagesManager
         }
     }
 
+
     public function create(Image $image)
     {
-        $req = $this->db->prepare("INSERT INTO image (name, path) VALUE (:name, :path)");
+        $req = $this->db->prepare('INSERT INTO image (name, path) VALUE (:name, :path)');
 
-        $req->bindValue(":name", $image->getName(), PDO::PARAM_STR);
-        $req->bindValue(":path", $image->getPath(), PDO::PARAM_STR);
+        $req->bindValue(':name', $image->getName(), PDO::PARAM_STR);
+        $req->bindValue(':path', $image->getPath(), PDO::PARAM_STR);
 
         $req->execute();
     }
 
     public function getImage(int $id)
     {
-        $req = $this->db->prepare('SELECT * FROM image WHERE id = :id');
+        $req = $this->db->prepare("SELECT * FROM `image` WHERE id = :id");
         $req->bindValue(":id", $id, PDO::PARAM_INT);
-        $images = $req->fetchAll();
-        return $images[0];
+        $req->execute();
+        // $req->execute([":id" => $id]); A verifier sinon on passe par la aussi pokemons manager
+        $data = $req->fetch();
+        $image = new Image($data);
+        return $image;
     }
 
     public function getLastImageId()
     {
-        $req = $this->db->query("SELECT * FROM image ORDER BY id DESC LIMIT 1");
+        $req = $this->db->query('SELECT * FROM image ORDER BY id DESC LIMIT 1');
         $image = $req->fetch()['id'];
         return $image;
     }
 
     public function update(Image $image)
     {
-        $req = $this->db->prepare("UPDATE image SET name = :name, path = :path");
-        $req->bindValue(":name", $image->getName(), PDO::PARAM_STR);
-        $req->bindValue(":path", $image->getPath(), PDO::PARAM_STR);
+        $req = $this->db->prepare('UPDATE image SET name = :name, path = :path');
+        $req->bindValue(':name', $image->getName(), PDO::PARAM_STR);
+        $req->bindValue(':path', $image->getPath(), PDO::PARAM_STR);
 
         $req->execute();
     }
 
     public function delete(int $id)
     {
-        $req = $this->db->prepare("DELETE FROM image where id = :id");
-        $req->bindValue(":id", $id, PDO::PARAM_INT);
+        $req = $this->db->prepare('DELETE FROM image where id = :id');
+        $req->bindValue(':id', $id, PDO::PARAM_INT);
 
         $req->execute();
     }

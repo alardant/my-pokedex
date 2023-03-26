@@ -51,7 +51,7 @@
         $name = $_POST['name'];
         $description = $_POST['description'];
         $type1 = $_POST['type1'];
-        $type2 = $_POST['type2'];
+        $type2 = $_POST['type2'] === 'null' ? null : $_POST['type2'];
 
         try {
             if ($_FILES['image']['size'] < 2000000) {
@@ -92,6 +92,7 @@
             'image' => $imageId
         ]);
         $pokemonManager->create($newPokemon);
+        header('Location: ./index.php');
     }
     ?>
 
@@ -118,7 +119,7 @@
 
             <label for='type2' class='form-label'>Type 2</label>
             <select name='type2' id='type2' class='form-select'>
-                <option value=''>--</option>
+                <option value='null'>--</option>
                 <?php foreach ($types as $type) : ?>
                     <option value='<?= $type->getId() ?>'><?= $type->getName() ?></option>
                 <?php endforeach ?>
