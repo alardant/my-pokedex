@@ -1,0 +1,9 @@
+# Visual Studio Code local settings ignored
+.vscode/
+
+# Local History for Visual Studio Code
+.history/
+
+# Logs
+logs
+*.log

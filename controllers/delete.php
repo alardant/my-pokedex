@@ -3,6 +3,11 @@
 require_once 'PokemonsManager.php';
 
 $pokemonManager = new PokemonsManager();
-$pokemonManager->delete($_GET['id']);
+
+try {
+    $pokemonManager->delete($_GET['id']);
+} catch (Exception $e) {
+    $e->getMessage();
+}
 
 header('Location : ./index.php');

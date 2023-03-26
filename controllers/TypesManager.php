@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Type.php';
+require_once './models/Type.php';
 
 class TypesManager
 {
@@ -8,16 +8,7 @@ class TypesManager
 
     public function __construct()
     {
-        $dbName = 'my-pokedex';
-        $port = 3306;
-        $username = 'root';
-        $password = '';
-
-        try {
-            $this->db = new PDO("mysql:host=localhost;dbname=$dbName;port=$port, $username, $password");
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-        }
+        require 'db-connect.php';
     }
 
     public function create(Type $type)
