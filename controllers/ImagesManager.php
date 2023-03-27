@@ -8,7 +8,7 @@ class ImagesManager
 
     public function __construct()
     {
-        require 'db-connect.php';
+        require "db-connect.php";
     }
 
 

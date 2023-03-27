@@ -1,11 +1,12 @@
 <main class='container'>
     <section class=' d-flex flex-wrap justify-content-center'>
-        <?php foreach ($pokemons as $pokemon) :
+        <?php
+        foreach ($pokemons as $pokemon) :
         ?>
 
             <div class='card m-5' style='width: 18rem;'>
-                <img src="<?= $imageManager->getImage($pokemon->getImageId())->getPath() ?>" class='card-img-top' alt='<?= $pokemon->getName() ?>'>
-                <div class='card-body'>
+                <img src='<?= $imageManager->getImage($pokemon->getImageId())->getPath() ?>' class='card-img-top' alt='<?= $pokemon->getName() ?> ' widt=100%; height=250rem object-fit: cover>
+                <div class=' card-body'>
                     <h5 class='card-title'><?= $pokemon->getNumber() ?># <?= $pokemon->getName() ?></h5>
                     <p class='card-text'><?= $pokemon->getDescription() ?></p>
                     <a href='update.php?id=<?= $pokemon->getId() ?>' class='btn btn-warning'>Modifier</a>
